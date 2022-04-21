@@ -183,6 +183,7 @@ if  [ $eleccion = 2 ]; then
 		git commit -m "$commit"
 		echo
 		echo "commit $commit confirmado con exito"
+		git push
 		echo "fin del programa"
 		exit
 
