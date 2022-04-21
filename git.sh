@@ -168,32 +168,28 @@ echo
 
 #add to git 
 if  [ $eleccion = 2 ]; then 
-		clear
-		echo "--------------add seleccionada-------------"
+	clear
+	echo "add seleccionada"
+	read -p "nombre de los archivos>>>>> " archivos
+	
+
+	read -p "cofirmar cambios (y-n)>>>>> " confirmar
+
+	if [ $confirmar = y ]; then
+		git add $archivos
+		echo "archivos cofirmarmados" $archivos
 		echo
-		read -p "nombre del archivo-------------------- " name 
+		read -p "commit de los archivos>>> " commit
+		git commit -m "$commit"
 		echo
-		echo "--------------------agnadiendo---------------"
-		sudo git add $name
-		echo "se agnadieron los archivos siguientes $name " 
-		echo
+		echo "commit $commit confirmado con exito"
+		echo "fin del programa"
+		exit
 
-		read -p "desea confimar los cambios(y-n)" change
-		if [ $change = y ]; then 
-			clear
-			read -p "nota de los cambios---- " commit
-			echo
-			echo "confirmando los cambios "
-			sudo git commit -m "$commit"
-			echo "cambios confimados"
-			git push 
-			echo 
-			echo "cambios actualizados con exito"
-
-
-		fi
-
-
+	else:
+		echo "operacion abortada"
+		exit
+	fi		
 
 
 fi
