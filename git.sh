@@ -5,6 +5,8 @@
 #version 1.0  by TONY-TOAF
 #date -21-02-28
 
+<<comen
+
 permiso=su
 clear
 echo "-------scrip para minimizar uso de git en linux-----------"
@@ -146,3 +148,52 @@ echo
 echo "------git finalizado--------------------"
 echo "------------saliendo-----------------"
 closed
+
+comen
+cho
+echo "---------------- by TONY-TOAF----------------------------"
+echo
+echo 
+clear
+#lista de opsiones primra instancia
+
+for i in "1--clonarn\n\n""2--add\n\n""3--commit\n\n""4--log\n\n""5--status\n\n""6--restar\n\n"
+
+do 
+	echo $i
+done
+
+read -p "aja una eleccion>>>>>> " eleccion
+echo
+
+#add to git 
+if  [ $eleccion = 2 ]; then 
+		clear
+		echo "--------------add seleccionada-------------"
+		echo
+		read -p "nombre del archivo-------------------- " name 
+		echo
+		echo "--------------------agnadiendo---------------"
+		sudo git add $name
+		echo "se agnadieron los archivos siguientes $name " 
+		echo
+
+		read -p "desea confimar los cambios(y-n)" change
+		if [ $change = y ]; then 
+			clear
+			read -p "nota de los cambios---- " commit
+			echo
+			echo "confirmando los cambios "
+			sudo git commit -m "$commit"
+			echo "cambios confimados"
+			git push 
+			echo 
+			echo "cambios actualizados con exito"
+
+
+		fi
+
+
+
+
+fi
