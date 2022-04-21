@@ -4,9 +4,69 @@
 #-------scrip para minimizar uso de git en linux-----------
 #version 1.0  by TONY-TOAF
 #date -21-02-28
+clear
+echo "---------------- by TONY-TOAF----------------------------"
+echo
+
+#lista de opsiones primra instancia
+for i in "1--add\n\n""2--init\n\n""3--status"
+do 
+	echo $i
+done
+echo 
+#variable de eleccion
+read -p "aja una eleccion>>>>>> " eleccion
+echo
+
+#condicion add del programa
+if  [ $eleccion = 1 ]; then 
+	clear
+	echo "add seleccionada"
+	read -p "nombre de los archivos>>>>> " archivos
+	
+
+	read -p "cofirmar cambios (y-n)>>>>> " confirmar
+
+	if [ $confirmar = y ]; then
+		git add $archivos
+		echo "archivos cofirmarmados" $archivos
+		echo
+		read -p "commit de los archivos>>> " commit
+		git commit -m "$commit"
+		echo
+		echo "commit $commit confirmado con exito"
+		git push
+		echo "fin del programa"
+		exit
+
+	elif [ $confirmar != 1 ]; then
+		clear
+		echo "operacion abortada"
+		exit
+	
+	fi
+fi 
+
+#condicional  sobre inicializacion 
+if [ $confirmar = 2 ]; then 
+	clear
+	git init 
+	echo "git iniciado con exito"
+
+fi
+#condicional sobre condicional status
+if [ $confirmar = 3 ]; then
+	#statements
+	clear
+	git status
+	exit
+
+
+fi
+
+
 
 <<comen
-
 permiso=su
 clear
 echo "-------scrip para minimizar uso de git en linux-----------"
@@ -50,13 +110,12 @@ if [ $eleccion = s ]; then ## para iniciar el git
 	sudo git init
 	echo 
 	echo "--------------git iniciado con exito-----------------"
-	<<coment
 	echo
 	echo -e ${opsiones[@]:1:7}
 	echo
 	read -p "eleccion--------------------  " eleccion
 	echo
-coment
+
 
 elif [ $eleccion = 1 ]; then #clonar 
 		clear
@@ -150,47 +209,3 @@ echo "------------saliendo-----------------"
 closed
 
 comen
-cho
-echo "---------------- by TONY-TOAF----------------------------"
-echo
-echo 
-clear
-#lista de opsiones primra instancia
-
-for i in "1--clonarn\n\n""2--add\n\n""3--commit\n\n""4--log\n\n""5--status\n\n""6--restar\n\n"
-
-do 
-	echo $i
-done
-
-read -p "aja una eleccion>>>>>> " eleccion
-echo
-
-#add to git 
-if  [ $eleccion = 2 ]; then 
-	clear
-	echo "add seleccionada"
-	read -p "nombre de los archivos>>>>> " archivos
-	
-
-	read -p "cofirmar cambios (y-n)>>>>> " confirmar
-
-	if [ $confirmar = y ]; then
-		git add $archivos
-		echo "archivos cofirmarmados" $archivos
-		echo
-		read -p "commit de los archivos>>> " commit
-		git commit -m "$commit"
-		echo
-		echo "commit $commit confirmado con exito"
-		git push
-		echo "fin del programa"
-		exit
-
-	else:
-		echo "operacion abortada"
-		exit
-	fi		
-
-
-fi
