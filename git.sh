@@ -9,7 +9,7 @@ echo "---------------- by TONY-TOAF----------------------------"
 echo
 
 #lista de opsiones primra instancia
-for i in "1--add\n\n""2--init\n\n""3--status"
+for i in "1--add\n\n""2--init\n\n""3--status\n\n""4--commit"
 do 
 	echo $i
 done
@@ -23,8 +23,6 @@ if  [ $eleccion = 1 ]; then
 	clear
 	echo "add seleccionada"
 	read -p "nombre de los archivos>>>>> " archivos
-	
-
 	read -p "cofirmar cambios (y-n)>>>>> " confirmar
 
 	if [ $confirmar = y ]; then
@@ -45,28 +43,39 @@ if  [ $eleccion = 1 ]; then
 		exit
 	
 	fi
-fi 
+
 
 #condicional  sobre inicializacion 
-if [ $confirmar = 2 ]; then 
+elif [ $eleccion = 2 ]; then 
 	clear
 	git init 
 	echo "git iniciado con exito"
 
-fi
+
 #condicional sobre condicional status
-if [ $confirmar = 3 ]; then
+elif [ $eleccion = 3 ]; then
 	#statements
 	clear
 	git status
 	exit
 
 
+#condifcional commit 
+elif [ $eleccion = 4 ]; then
+		read -p "commit de los archivos>>> " commit
+		git commit -m "$commit"
+		echo
+		echo "commit $commit confirmado con exito"
+		git push
+		echo "fin del programa"
+		exit
+
+
 fi
 
 
 
-<<comen
+<<comentario
 permiso=su
 clear
 echo "-------scrip para minimizar uso de git en linux-----------"
@@ -208,4 +217,4 @@ echo "------git finalizado--------------------"
 echo "------------saliendo-----------------"
 closed
 
-comen
+comentario
